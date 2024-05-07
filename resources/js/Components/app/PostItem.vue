@@ -2,20 +2,15 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { PencilIcon, TrashIcon, EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { ref } from "vue";
 import { router } from '@inertiajs/vue3';
 import PostUserHeader from "@/Components/app/PostUserHeader.vue";
+import { isImage } from '@/helpers.js'
 
 const props = defineProps({
     post: Object
 })
 
 const emit = defineEmits(['editClick'])
-
-function isImage(attachment){
-    const mime = attachment.mime.split('/');
-    return mime[0].toLowerCase() === 'image';
-}
 
 function openEditModal(){
     emit('editClick', props.post)
@@ -34,7 +29,7 @@ function deletePost(){
 <template>
     <div class="bg-white border rounded p-4 mb-3">
         <div class="flex items-center justify-between mb-3">
-            <PostUserHeader :post="post" />    
+            <PostUserHeader :post="post" />   
             <Menu as="div" class="relative inline-block text-left">
                 <div>
                     <MenuButton
@@ -111,7 +106,9 @@ function deletePost(){
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
             <template v-for="attachment of post.attachments">
-                <div class="group aspect-square bg-blue-100 flex flex-col items-center justify-center text-gray-500 relative">
+
+                <div 
+                  class="group aspect-square bg-blue-100 flex flex-col items-center justify-center text-gray-500 relative">
                     <!-- Download -->
                     <button class="opacity-0 group-hover:opacity-100 transition-all w-8 h-8 flex items-center justify-center text-gray-100 bg-gray-700 rounded absolute right-2 top-2 cursor-pointer hover:bg-gray-800">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -119,6 +116,7 @@ function deletePost(){
                         </svg>
                     </button>
                     <!--/ Download -->
+
                     <img v-if="isImage(attachment)" 
                     :src="attachment.url" 
                     class="object-cover aspect-square" />
