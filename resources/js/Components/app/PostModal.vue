@@ -167,7 +167,8 @@ function undoDelete(myFile){
                                   class="flex items-center justify-between py-3 px-4 font-medium bg-gray-100 text-gray-900"
                                 >
                                     {{ post.id ? 'Update Post' : 'Create Post' }}
-                                    <button @click="closeModal" class="w-8 h-8 rounded-full hover:bg-black/5 transition flex items-center justify-center">
+                                    <button @click="closeModal" 
+                                        class="w-8 h-8 rounded-full hover:bg-black/5 transition flex items-center justify-center">
                                         <XMarkIcon class="w-4 h-4" />
                                     </button>
                                 </DialogTitle>
@@ -211,7 +212,6 @@ function undoDelete(myFile){
                                     <button
                                       type="button"
                                       class="flex items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible: outline-2 focus-visible:outline-offset-2 focus-visible: outline-indigo-600 w-full relative"
-                                      @click="submit"
                                     >
                                         <PaperClipIcon class="w-4 h-4 mr-2" />
                                         Attach Files
