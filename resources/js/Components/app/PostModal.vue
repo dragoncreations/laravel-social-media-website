@@ -260,7 +260,8 @@ function undoDelete(myFile){
                                     >
                                         <PaperClipIcon class="w-4 h-4 mr-2" />
                                         Attach Files
-                                        <input @click.stop @change="onAttachmentChoose" type="file" multiple class="absolute left-0 top-0 right-0 bottom-0 opacity-0">
+                                        <input @click.stop @change="onAttachmentChoose" type="file" multiple 
+                                            class="absolute left-0 top-0 right-0 bottom-0 opacity-0">
                                     </button>
                                     <button
                                       type="button"
