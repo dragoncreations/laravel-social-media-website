@@ -33,4 +33,9 @@ class Comment extends Model
     public function reactions(): MorphMany {
         return $this->morphMany(Reaction::class, 'object');
     }
+    
+    public function isOwner($userId)
+    {
+        return $this->user_id == $userId;
+    }
 }
