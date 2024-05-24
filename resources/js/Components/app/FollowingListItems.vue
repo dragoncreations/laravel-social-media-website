@@ -4,6 +4,11 @@ import UserListItem from "@/Components/app/UserListItem.vue";
 import {ref} from "vue";
 
 const searchKeyword = ref('');
+
+defineProps({
+    users: Array
+})
+
 </script>
 
 <template>
@@ -13,7 +18,10 @@ const searchKeyword = ref('');
             You don't have friends yet.
         </div>
         <div v-else>
-            
+            <UserListItem v-for="user of users"
+                          :user="user"
+                          :key="user.id"
+                          class="rounded-lg"/>
         </div>
     </div>
 </template>
