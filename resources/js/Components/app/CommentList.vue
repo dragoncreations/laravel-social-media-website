@@ -56,9 +56,9 @@ function deleteComment(comment) {
             const commentIndex = props.data.comments.findIndex(c => c.id === comment.id)
             props.data.comments.splice(commentIndex, 1)
             if (props.parentComment) {
-                props.parentComment.num_of_comments--;
+                props.parentComment.num_of_comments -= data.deleted;
             }
-            props.post.num_of_comments--;
+            props.post.num_of_comments -= data.deleted;
             emit('commentDelete', comment)
         })
 }
@@ -102,7 +102,7 @@ function onCommentDelete(comment) {
 </script>
 
 <template>
-    <div class="flex gap-2 mb-3">
+    <div v-if="authUser" class="flex gap-2 mb-3">
         <Link :href="route('profile', authUser.username)">
             <img :src="authUser.avatar_url"
                  class="w-[40px] rounded-full border border-2 transition-all hover:border-blue-500"/>
@@ -177,6 +177,9 @@ function onCommentDelete(comment) {
                     </DisclosurePanel>
                 </Disclosure>
             </div>
+        </div>
+        <div v-if="!data.comments.length" class="py-4 text-center dark:text-gray-100">
+            There are no comments.
         </div>
     </div>
 </template>
