@@ -258,7 +258,7 @@ function followUser() {
                                               :key="user.id"
                                               class="shadow rounded-lg"/>
                             </div>
-                            <div v-else class="text-center py-8">
+                            <div v-else class="text-center py-8 dark:text-gray-100">
                                 User does not have followers.
                             </div>
                         </TabPanel>
@@ -273,7 +273,7 @@ function followUser() {
                                               :key="user.id"
                                               class="shadow rounded-lg"/>
                             </div>
-                            <div v-else class="text-center py-8">
+                            <div v-else class="text-center py-8 dark:text-gray-100">
                                 The user is not following to anybody
                             </div>
                         </TabPanel>
